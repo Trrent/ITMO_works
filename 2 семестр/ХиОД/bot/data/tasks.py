@@ -1,0 +1,17 @@
+import sqlalchemy
+from sqlalchemy import orm
+from .db_session import SqlAlchemyBase
+
+
+class Task(SqlAlchemyBase):
+    __tablename__ = 'tasks'
+
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    type = sqlalchemy.Column(sqlalchemy.Integer, nullable=False)
+    question = sqlalchemy.Column(sqlalchemy.String, nullable=False)
+    options = sqlalchemy.Column(sqlalchemy.String, nullable=False)
+    correct_option = sqlalchemy.Column(sqlalchemy.String, nullable=False)
+    rule_id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("rules.id"), nullable=True)
+
+    def __repr__(self):
+        return f"Task(id={self.id}, type={self.type})"

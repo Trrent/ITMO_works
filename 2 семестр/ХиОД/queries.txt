@@ -1,0 +1,14 @@
+a)
+SELECT * FROM tasks WHERE type=4 ORDER BY random() LIMIT 1
+
+b)
+SELECT * FROM tasks WHERE type=4 AND rule_id=(SELECT id FROM rules WHERE rule='Неподвижное ударение в списке существительных от ФИПИ:\nбАнты, шАрфы, тОрты, срЕдства')
+
+c)
+SELECT username FROM users WHERE user_first_name LIKE 'Daniel Laskin'
+
+d)
+SELECT COUNT(id) FROM reports WHERE user_id=7 AND datetime>='2024-05-20' AND is_right_answer=TRUE
+
+e)
+SELECT correct_option FROM tasks WHERE question='Какой тип грамматической ошибки совершен в предложение «Благодаря словаря паронимов русского языка читатель сразу увидит разницу между «сторожем» - лесником и «заведующим лесным хозяйством» - лесничим, который растит лес.»'

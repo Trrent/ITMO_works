@@ -1,0 +1,46 @@
+create table users
+(
+    id              INTEGER not null
+        primary key,
+    user_id         INTEGER not null,
+    username        VARCHAR,
+    user_first_name VARCHAR,
+    modified_date   DATETIME,
+    task_id         INTEGER
+        references tasks
+);
+
+create table tasks
+(
+    id             INTEGER not null
+        primary key,
+    type           INTEGER not null,
+    question       VARCHAR not null,
+    options        VARCHAR not null,
+    correct_option STRING  not null,
+    explanation    VARCHAR,
+    rule_id        INTEGER
+        references rules
+);
+
+create table rules
+(
+    id   INTEGER not null
+        primary key,
+    rule VARCHAR not null
+);
+
+
+
+create table reports
+(
+    id              INTEGER not null
+        primary key,
+    datetime        DATETIME,
+    user_id         INTEGER not null
+        references users,
+    task_id         INTEGER
+        references tasks,
+    is_right_answer BOOLEAN
+);
+
